@@ -1,0 +1,210 @@
+#new_player_css {display: none;}
+.audio_player {width: 100%; display: block; position: relative;}
+.audio_white_line {width: 100%; height: 15px; position: relative; display: block; top: -5px; cursor: pointer; -webkit-user-select: none;}
+.audio_load_line {width: 100%; height: 1px; margin: 0; position: relative; display: block; top: -15px; background-color: #5F7D9D; opacity: 0.2;  cursor: pointer; -webkit-user-select: none; *position: absolute; *top: 3px; *filter:alpha(opacity=20);}
+.audio_progress_line {width: 0%; height: 1px; margin: 0; position: relative; display: block; top: -9px; background-color: #5F7D9D; cursor: pointer; -webkit-user-select: none; *position: absolute; *top: 3px;}
+.audio_pr_slider {display: block; position: relative; width: 14px; height: 5px; left: 0px; border: 0; padding: 0; margin: -7px 0 0 0; background-color: #5F7D9D; -webkit-user-select: none; cursor: pointer; *position: absolute; *top: 7px;}
+.audio_white_volume_line {width: 40px; height: 15px; position: relative; top: -5px; display: block; cursor: pointer; -webkit-user-select: none;}
+.audio_volume_line {width: 40px; height: 1px; position: relative; top: -9px; margin: 0; background-color: #5F7D9D; cursor: pointer; -webkit-user-select: none; *position: absolute; *top: 3px;;}
+.audio_vol_slider {border: 0; padding: 0; margin: -7px 0 0 0; display: block; width: 7px; height: 5px; position: relative; background-color: #5F7D9D; cursor: pointer; -webkit-user-select: none; *position: absolute; *top: 7px; *overflow: hidden}
+div.player {margin-top: 5px;}
+div.player div { -webkit-user-select: none; -moz-user-select: none; user-select: none;}
+
+#gp {
+  display: none;
+  height: 36px;
+  z-index: 1023;
+  cursor: default;
+}
+#gp div#gp_large {
+  display: none;
+}
+#gp div#gp_back{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 36px;
+  border-radius: 3px; /* css3 */
+  -moz-border-radius: 3px; /* firefox */
+  -webkit-border-radius: 3px; /* Safari, Chrome */
+  -khtml-border-radius: 3px; /* khtml */
+  overflow: hidden;
+  background-color: #000;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+#gp div.wrap {
+  position: relative;
+  width: 100%;
+  height: 36px;
+}
+#gp div#gp_wrap {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #FFF;
+  height: 36px;
+  z-index: 1024;
+  width: 100%;
+}
+#gp .audio .gp_play_wrap {
+  padding: 3px;
+  cursor: pointer;
+}
+#gp .audio .gp_play {
+  background: url("../images/playback_icons.gif?1") no-repeat scroll 0 0 transparent;
+  height: 10px;
+  width: 10px;
+}
+#gp_audio_info_large {
+  padding: 5px 0px 2px;
+}
+#gp_audio_info_small {
+  padding: 5px 0px 2px 3px;
+}
+#gp_play_btn_large,
+#gp_play_btn_small {
+  padding: 10px 2px 10px 7px;
+}
+#gp div.title_wrap {
+  width: 125px;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 13px;
+  position: relative;
+}
+#gp #player_global {
+  width: 100%;
+  padding-top: 7px;
+}
+#gp_audio_info_large {
+  width: 330px;
+} 
+#gp_vol {
+  padding: 23px 0px 0px 20px;
+}
+*:first-child+html #gp #gp_vol_line {
+  position: relative;
+  top: -13px;
+}
+#gp .duration {
+  color: #FFF;
+  padding: 1px 0px 0px 0px;
+  position: absolute;
+}
+#gp #audio_white_line_global,
+#gp #audio_vol_back_global {
+  background-color: auto;
+}
+#gp .audio .player_wrap {
+  margin: -1px 0px 0px;
+  padding: 0px;
+  float: left;
+  width: 100%
+}
+#gp .gp_controls {
+  padding: 13px 0px 13px 0px;
+}
+#gp .close {
+  vertical-align: top;
+  padding: 1px 1px 1px 5px;
+}
+#gp #gp_close {
+  background: url("../images/playback_icons.gif?1") no-repeat scroll 0 -68px transparent;
+  width: 7px;
+  height: 7px;
+}
+#gp #gp_close_wrap {
+  cursor: pointer;
+  padding: 1px;
+}
+#gp .gp_controls div {
+  background: url("../images/playback_icons.gif?1") no-repeat scroll 0 0 transparent;
+  height: 11px;
+  width: 13px;
+  margin: 0px 3px;
+  float: left;
+  cursor: pointer;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+#gp .gp_controls div.prev {
+  background-position: 0 -22px;
+  margin-right: 4px;
+}
+#gp .gp_controls div.next {
+  background-position: 0 -33px;
+}
+#gp .gp_controls div.repeat{
+  background-position: 0 -44px;
+}
+#gp .gp_controls div.repeat.on{
+  background-position: 0 -44px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+#gp .add_wrap {
+  padding: 12px 0px 13px 1px;
+}
+#gp .add {
+  background: url("../images/playback_icons.gif?1") no-repeat scroll 0 0 transparent;
+  height: 11px;
+  width: 13px;
+  margin: 0px 5px;
+  cursor: pointer;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  background-position: 0 -56px;
+}
+#gp .add_wrap.added .add {
+  background-position: 0 -84px;
+}
+#gp .padd {
+  width: 12px;
+}
+#gp .audio_load_line,
+#gp .audio_progress_line,
+#gp .audio_pr_slider,
+#gp .audio_volume_line,
+#gp .audio_vol_slider {
+  background-color: #FFF;
+}
+#gp .duration {
+  cursor: pointer;
+  right: 0px;
+}
+#gp.reverse .fl_l {
+  float: right;
+}
+#gp.reverse .fl_r {
+  float: left;
+}
+#gp.reverse .title_wrap .fl_l,
+#gp.reverse .lines_wrap .fl_l {
+  float: left;
+}
+#gp.reverse .title_wrap .fl_r,
+#gp.reverse .lines_wrap .fl_r {
+  float: right;
+}
+#gp.reverse #gp_play_btn_small,
+#gp.reverse #gp_play_btn_large {
+  padding: 10px 7px 10px 2px;
+}
+#gp.reverse .close {
+  padding: 1px 5px 1px 1px;
+}
+#gp.reverse .add_wrap {
+  padding: 13px 0px 13px 1px;
+}
+#gp.reverse #gp_audio_info_small .title_wrap {
+  width: 118px;
+}
+
+.fake_text {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
