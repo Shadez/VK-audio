@@ -4,6 +4,12 @@ function nav(url) {
 		type: 'get',
 		success: function(d) {
 			$('#content').html(d);
+			try {
+				history.pushState({}, '', url);
+				return;
+			}
+			catch (e) {}
+			location.hash = '#/' + url;
 		}
 	});
 

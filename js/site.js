@@ -4,6 +4,8 @@ var hiding = false;
 var current_audio = '';
 var showTimeLeft = false;
 var audio_duration = 0;
+var playlist = [];
+var is_paused = false;
 
 $(document).ready(function() {
 	$('#player').draggable();
@@ -12,6 +14,7 @@ $(document).ready(function() {
 		containment: 'parent',
 		start: function() {
 			$('#jp').jPlayer('pause');
+			is_paused = true;
 		},
 		drag: function(e, ui) {
 			var slider_pos = ((ui.position.left / 316) * 100);
@@ -21,6 +24,7 @@ $(document).ready(function() {
 		},
 		stop: function() {
 			$('#jp').jPlayer('play');
+			is_paused = false;
 		}
 	});
 	$('#vol_slider').draggable({
@@ -63,7 +67,24 @@ $(document).ready(function() {
 	});
 
 	$('#play_large').click(function() {
-		$('#' + current_audio).trigger('click');
+		playpause();
+	});
+
+	// Generate playlist
+	playlist = [];
+	var idx = 0;
+
+	$('div.audio_play_btn').each(function(idx, val) {
+		if ($(val).attr('id').indexOf('audio') >= 0)
+		{
+			playlist[idx] = {
+				'id': $(val).attr('id'),
+				'file': $(val).attr('data-file'),
+				'artist': $(val).attr('data-artist'),
+				'composition': $(val).attr('data-composition')
+			};
+			++idx;
+		}
 	});
 
 	$('#jp').jPlayer({
@@ -93,7 +114,66 @@ $(document).ready(function() {
 	/**
 	 * Runs player
 	 **/
-	function play(track) {
+	function play(track, nextTrack) {
+		is_paused = true;
+		if (!track)
+		{
+			// user changed page, no items available
+			// play music from playlist
+			var id = 0;
+			if (current_audio)
+			{
+				id = parseInt(current_audio.toString().substr(5));
+
+				if (nextTrack)
+				{
+					if (id >= playlist.length)
+						id = 1;
+					else
+						id++;
+				}
+				else
+				{
+					if (id < 2)
+						id = playlist.length;
+					else
+						id--;
+				}
+
+				current_audio = 'audio' + id;
+				//console.log('current: %s, id: %d, length: %d', current_audio, id, playlist.length);
+				$('#jp').jPlayer('clearMedia').jPlayer('setMedia', {mp3: 'audio/' + playlist[id-1].file}).jPlayer('play', 0);
+
+				var small_info = '';
+
+				var artist = playlist[id-1].artist;
+				if (!artist)
+					artist = 'Unknown';
+
+				var composition = playlist[id-1].composition;
+				if (!composition)
+					composition = 'Unknown';
+
+				var large_info = '<strong>' + artist + '</strong> - ' + composition;
+				if (artist.length > 17)
+					small_info += '<strong>' + artist.substr(0, 17) + '...</strong><br />';
+				else
+					small_info += '<strong>' + artist + '</strong><br />';
+
+				if (composition.length > 15)
+					small_info += composition.substr(0, 15) + '...';
+				else
+					small_info += composition;
+
+				$('#title_large').html(large_info);
+				$('#title_small').html(small_info);
+
+				is_paused = false;
+
+				return false;
+			}
+			return false;
+		}
 		if (current_audio && current_audio != track.attr('id'))
 			$('#' + current_audio).attr('style', 'background-position: 0 0px');
 
@@ -133,6 +213,25 @@ $(document).ready(function() {
 
 		$('#title_large').html(large_info);
 		$('#title_small').html(small_info);
+
+		is_paused = false;
+	}
+
+	function playpause() {
+		if (!is_paused)
+		{
+			$('#jp').jPlayer('pause');
+			$('#play_large').attr('style', 'background-position: 0px 0px;');
+			$('#play_small').attr('style', 'background-position: 0px 0px;');
+			is_paused = true;
+		}
+		else
+		{
+			$('#jp').jPlayer('play');
+			$('#play_large').attr('style', 'background-position: 0px -11px;');
+			$('#play_small').attr('style', 'background-position: 0px -11px;');
+			is_paused = false;
+		}
 	}
 
 	/**
@@ -173,29 +272,14 @@ $(document).ready(function() {
 	 * Next track button handler
 	 **/
 	$('#next_track').click(function() {
-		var next = parseInt(current_audio.toString().substr(5)) + 1;
-		var track;
-		if (!$('#audio' + next).length)
-			track = $('#audio1');
-		else
-			track = $('#audio' + next);
-
-		play(track);
-
+		play(false, true);
 	});
 
 	/**
 	 * Prev. track button handler
 	 **/
 	$('#prev_track').click(function() {
-		var prev = parseInt(current_audio.toString().substr(5)) - 1;
-		var track;
-		if (!$('#audio' + prev).length)
-			track = $('#audio' + ($('ul#audio-list > li').length));
-		else
-			track = $('#audio' + prev);
-
-		play(track);
+		play(false, false);
 
 	});
 

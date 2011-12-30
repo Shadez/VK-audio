@@ -4,14 +4,17 @@ if (isset($_GET['navRequest']))
 	die('<h1>My audio</h1>
 			<ul style="list-style:none;" class="audio_list" id="audio-list">
 				<li>
-				<div class="audio_play_btn" id="audio1" data-artist="Nasty" data-composition="My Jingle Balls" data-playing="false" data-file="nasty_jingle_balls.mp3" data-length="120">
-				</div>
-				Nasty - My Jingle Balls
+					<div class="audio_play_btn" id="audio1" data-artist="Nasty" data-composition="My Jingle Balls" data-playing="false" data-file="nasty_jingle_balls.mp3" data-length="120"></div>
+					Nasty - My Jingle Balls
 				</li>
-				<li><div class="audio_play_btn" id="audio2" data-artist="Barney Stinson" data-composition="Suits" data-playing="false" data-file="ost_himym_suits.mp3" data-length="172"></div></li>
-				Barney Stinson - Suits
-				<li><div class="audio_play_btn" id="audio3" data-artist="" data-composition="Nokia Tune Dubstep Edition" data-playing="false" data-file="nokia_tune_dubstep.mp3" data-length="172"></div>
-				Nokia Tune Dubstep Edition</li>
+				<li>
+					<div class="audio_play_btn" id="audio2" data-artist="Barney Stinson" data-composition="Suits" data-playing="false" data-file="ost_himym_suits.mp3" data-length="172"></div>
+					Barney Stinson - Suits
+				</li>
+				<li>
+					<div class="audio_play_btn" id="audio3" data-artist="" data-composition="Nokia Tune Dubstep Edition" data-playing="false" data-file="nokia_tune_dubstep.mp3" data-length="172"></div>
+					Nokia Tune Dubstep Edition
+				</li>
 			</ul>
 			<br />
 			<a href="about.html" onclick="return nav(\'about.html\');">About</a><br /><a href="random.php" onclick="return nav(\'random.php\');">show random</a>');
@@ -42,14 +45,17 @@ if (isset($_GET['navRequest']))
 			<h1>My audio</h1>
 			<ul style="list-style:none;" class="audio_list" id="audio-list">
 				<li>
-				<div class="audio_play_btn" id="audio1" data-artist="Nasty" data-composition="My Jingle Balls" data-playing="false" data-file="nasty_jingle_balls.mp3" data-length="120">
-				</div>
-				Nasty - My Jingle Balls
+					<div class="audio_play_btn" id="audio1" data-artist="Nasty" data-composition="My Jingle Balls" data-playing="false" data-file="nasty_jingle_balls.mp3" data-length="120"></div>
+					Nasty - My Jingle Balls
 				</li>
-				<li><div class="audio_play_btn" id="audio2" data-artist="Barney Stinson" data-composition="Suits" data-playing="false" data-file="ost_himym_suits.mp3" data-length="172"></div></li>
-				Barney Stinson - Suits
-				<li><div class="audio_play_btn" id="audio3" data-artist="" data-composition="Nokia Tune Dubstep Edition" data-playing="false" data-file="nokia_tune_dubstep.mp3" data-length="172"></div>
-				Nokia Tune Dubstep Edition</li>
+				<li>
+					<div class="audio_play_btn" id="audio2" data-artist="Barney Stinson" data-composition="Suits" data-playing="false" data-file="ost_himym_suits.mp3" data-length="172"></div>
+					Barney Stinson - Suits
+				</li>
+				<li>
+					<div class="audio_play_btn" id="audio3" data-artist="" data-composition="Nokia Tune Dubstep Edition" data-playing="false" data-file="nokia_tune_dubstep.mp3" data-length="172"></div>
+					Nokia Tune Dubstep Edition
+				</li>
 			</ul>
 			<br />
 			<a href="about.html" onclick="return nav('about.html');">About</a>
@@ -58,7 +64,7 @@ if (isset($_GET['navRequest']))
 
 
 		<!-- Player part -->
-		<div id="player_wrapper">
+		<div id="player_wrapper" style="position:fixed;">
 			<div id="jp" class="jp-player"></div>
 			<div id="player" style="display:none; left:603px;top:220px;">
 				<div id="small" style="display:true;width:125px;">
