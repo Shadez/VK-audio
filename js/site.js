@@ -92,7 +92,8 @@ $(document).ready(function() {
 		swfPath: '../swf',
 		wmode: "window",
 		ended: function(e) {
-			$('#next_track').trigger('click');
+			if ($('#jp').jPlayer('option', 'loop') == false)
+				$('#next_track').trigger('click');
 		},
 		volume: 1,
 		cssSelectorAncestor: '#audio_info_large',
@@ -292,9 +293,12 @@ $(document).ready(function() {
 			$(this).removeClass('on');
 			$('#jp').jPlayer('option', 'loop', false);
 			$('#jp').unbind(".jPlayerRepeat");
+			console.log('repeat off');
 		}
 		else {
 			$(this).addClass('on');
+			console.log('repeat on');
+			$('#jp').jPlayer('option', 'loop', true);
 			$('#jp').jPlayer('repeat');
 		}
 	});
