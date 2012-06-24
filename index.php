@@ -66,7 +66,7 @@ if (isset($_GET['navRequest']))
 		<!-- Player part -->
 		<div id="player_wrapper" style="position:fixed;">
 			<div id="jp" class="jp-player"></div>
-			<div id="player" style="display:none; left:603px;top:220px;">
+			<div id="player" style="display:none; left:10px;top:220px;">
 				<div id="small" style="display:true;width:125px;">
 					<div class="play_btn fl_l" id="play_btn_small">
 						<div class="play_wrap">

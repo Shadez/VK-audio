@@ -87,6 +87,27 @@ $(document).ready(function() {
 		}
 	});
 
+	$('#back_line').click(function(e) {
+		var position = $(this).position();
+		var offset = $(this).offset();
+		var x = e.pageX - (offset.left);
+		var width = parseInt($(this).css('width').replace('px', ''), 10);
+		var percent = (x / width) * 100;
+
+		$('#jp').jPlayer('playHead', percent);
+	});
+
+	$('#vol_back').click(function(e) {
+		var position = $(this).position();
+		var offset = $(this).offset();
+		var x = e.pageX - (offset.left);
+		var width = parseInt($(this).css('width').replace('px', ''), 10);
+		var percent = (x / width);
+
+		$('#jp').jPlayer('volume', percent);
+		$('#vol_slider').css('left', x + 'px');
+	});
+
 	$('#jp').jPlayer({
 		supplied: 'mp3',
 		swfPath: '../swf',
@@ -124,6 +145,7 @@ $(document).ready(function() {
 			var id = 0;
 			if (current_audio)
 			{
+				
 				id = parseInt(current_audio.toString().substr(5));
 
 				if (nextTrack)
@@ -141,7 +163,9 @@ $(document).ready(function() {
 						id--;
 				}
 
+				$('#' + current_audio).css('background-position', '0 0px');
 				current_audio = 'audio' + id;
+				$('#' + current_audio).css('background-position', '0 -16px');
 				//console.log('current: %s, id: %d, length: %d', current_audio, id, playlist.length);
 				$('#jp').jPlayer('clearMedia').jPlayer('setMedia', {mp3: 'audio/' + playlist[id-1].file}).jPlayer('play', 0);
 
